@@ -21,7 +21,7 @@ html {
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg);
-    background-image: url("../img/Map2-bg.png");
+    background-image: url("../img/Map.png");
     background-size:cover;
     background-attachment: fixed;
     background-position-x: center;
@@ -343,7 +343,7 @@ footer .credit a {
 
     .container .pala1,
     .container .pala2 {
-        height: 25rem;
+        height: 21rem;
     }
 
     .tutor .row {
@@ -366,5 +366,10 @@ footer .credit a {
     .container .logo {
         height: 20rem;
         margin-top: -13rem;
+    }
+
+    .container .pala1,
+    .container .pala2 {
+        height: 18rem;
     }
 }
