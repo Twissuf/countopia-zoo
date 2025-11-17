@@ -1,0 +1,169 @@
+:root {
+    --highlight: #F5B332;
+    --primary: #A45B1B;
+    --bg: #5CAF60;
+    --bg2: #3D2B1F;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg);
+    background-image: url("../img/MapPolos.png");
+    background-size:cover;
+    background-attachment: fixed;
+    background-position-x: center;
+    background-position-y: top;
+    color: var(--primary);
+}
+
+.logo {
+    height: 30rem;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+.container {
+    background-color: white;
+    margin: 5rem;
+    padding: 5rem;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.row {
+    height: 100%;
+    display: flex;
+    margin: 5rem 5rem 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+}
+
+.row .num {
+    height: 15rem;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    transition: 0.1s linear;
+}
+
+.row .num:hover {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1));
+    transition: 0.1s linear;
+}
+
+/* Overlay papan */
+.board {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Isi papan */
+.info {
+    background: white;
+    padding: 25px 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    max-width: 400px;
+    transform: scale(0.8);
+    opacity: 0;
+    animation: popIn 0.3s ease forwards;
+}
+
+
+
+/* Tombol */
+.numpang {
+    text-align: center;
+    margin: 3rem;
+}
+
+.play,
+.exit-btn {
+    margin-top: 1rem;
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
+    color: white;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+}
+
+.play:hover,
+.exit-btn:hover {
+    color: var(--primary);
+    background-color: var(--highlight);
+}
+
+/* Animasi muncul */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Animasi hilang */
+.papan.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+.isi-papan.fade-out {
+    animation: popOut 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes popOut {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(0.8); opacity: 0; }
+}
+
+
+/* Media */
+
+/* Leptop */
+
+@media (max-width: 1366px) {
+    html {
+        font-size: 75%;
+    }
+}
+
+/* Tablet */
+
+@media (max-width: 758px) {
+    html {
+        font-size: 62.5%;
+    }
+}
+
+/* hape */
+
+@media (max-width: 450px) {
+    html {
+        font-size: 55%;
+    }
+}
