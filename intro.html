@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countopia</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Stlye -->
+    <link rel="stylesheet" href="css/intro.css">
+</head>
+
+<body>
+    <div class="numpang">
+        <img src="img/Logo.png" alt="Logo" class="logo">
+    </div>
+
+    <div class="container">
+        <h1>Introduction</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, quas laboriosam! 
+            Odit architecto sunt, rem consequuntur possimus eos. Vel aliquam repellat perspiciatis mollitia libero, 
+            velit assumenda. Architecto nisi magni placeat?</p>
+    </div>
+    <div class="row">
+        <a onclick="buka('info0')"><img src="img/Angka0.png" alt="0" class="num"></a>
+        <a onclick="buka('info1')"><img src="img/Angka1.png" alt="0" class="num"></a>
+        <a onclick="buka('info2')"><img src="img/Angka2.png" alt="0" class="num"></a>
+        <a onclick="buka('info3')"><img src="img/Angka3.png" alt="0" class="num"></a>
+        <a onclick="buka('info4')"><img src="img/Angka4.png" alt="0" class="num"></a>
+        <a onclick="buka('info5')"><img src="img/Angka5.png" alt="0" class="num"></a>
+        <a onclick="buka('info6')"><img src="img/Angka6.png" alt="0" class="num"></a>
+        <a onclick="buka('info7')"><img src="img/Angka7.png" alt="0" class="num"></a>
+        <a onclick="buka('info8')"><img src="img/Angka8.png" alt="0" class="num"></a>
+        <a onclick="buka('info9')"><img src="img/Angka9.png" alt="0" class="num"></a>
+    </div>
+    
+    <div class="board" id="board">
+        <div class="info" id="info">
+            <h3 id="judul"></h3>
+            <p id="isi"></p>
+            <button class="exit-btn" onclick="tutup()">Tutup</button>
+        </div>
+    </div>
+
+    <div class="numpang">
+        <a href="#" onclick="window.location.href='cardo.html'" class="play">Play</a>
+    </div>
+    
+
+
+    <!-- Icon Script -->
+    <script>
+        feather.replace();
+    </script>
+
+    <!-- Script -->
+    <script src="js/intro.js"></script>
+</body>
+
+</html>
