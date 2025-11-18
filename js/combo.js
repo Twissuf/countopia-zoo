@@ -27,7 +27,7 @@ function startGame() {
     } while (result < 0 || result > 9 || result !== Math.floor(result));
 
     document.getElementById("question").innerHTML =
-        `<img src="${imgPath(a)}"> <h1>${op}</h1> <img src="${imgPath(b)}"> <h1>=</h1> <span class="slot" id="slot"></span>`;
+        `<img src="${imgPath(a)}"> <h1>${op}</h1> <img src="${imgPath(b)}"> <h1>=</h1> <span class="slot" id="slot" style="z-index: 2;"></span>`;
 
     correctAnswer = result;
 
@@ -137,15 +137,21 @@ function touchMove(e) {
 
 function touchEnd(e) {
     if (!draggedMobile) return;
+    draggedMobile.style.zIndex = 1;
 
     let t = e.changedTouches[0];
     let elem = document.elementFromPoint(t.clientX, t.clientY);
+    let slot = document.getElementById("slot");
 
     // cek kalau dilepas di SLOT
-    if (elem && elem.id === "slot") {
+    console.log("Drop kena:", elem);
+
+
+    if (elem.closest("#slot")) {
         let val = parseInt(draggedMobile.dataset.val);
 
-        elem.innerHTML = `<img src="${imgPath(val)}" style="width:100px;">`;
+        console.log(val)
+        slot.innerHTML = `<img src="${imgPath(val)}" style="width:100px;">`;
 
         if (val === correctAnswer) {
             message.innerHTML = `
