@@ -1,11 +1,20 @@
 const pairs = [
-    { id: '1', images: ['Angka1.png', '1.png'] },
-    { id: '2', images: ['Angka2.png', '2.png'] },
-    { id: '3', images: ['Angka3.png', '3.png'] },
-    { id: '4', images: ['Angka4.png', '4.png'] },
-    { id: '5', images: ['Angka5.png', '5.png'] },
-    { id: '6', images: ['Angka6.png', '6.png'] },
+    { id: '1', images: ['Kartu1.jpg', 'Katru1.jpg'] },
+    { id: '2', images: ['Kartu2.jpg', 'Katru2.jpg'] },
+    { id: '3', images: ['Kartu3.jpg', 'Katru3.jpg'] },
+    { id: '4', images: ['Kartu4.jpg', 'Katru4.jpg'] },
+    { id: '5', images: ['Kartu5.jpg', 'Katru5.jpg'] },
+    { id: '6', images: ['Kartu6.jpg', 'Katru6.jpg'] },
+    { id: '7', images: ['Kartu7.jpg', 'Katru7.jpg'] },
+    { id: '8', images: ['Kartu8.jpg', 'Katru8.jpg'] },
+    { id: '9', images: ['Kartu9.jpg', 'Katru9.jpg'] },
+    { id: '0', images: ['Kartu0.jpg', 'Katru0.jpg'] },
 ];
+
+pairs.splice(Math.floor(Math.random() * 10), 1)
+pairs.splice(Math.floor(Math.random() * 9), 1)
+pairs.splice(Math.floor(Math.random() * 8), 1)
+pairs.splice(Math.floor(Math.random() * 7), 1)
 
 const board = document.querySelector('.board');
 const message = document.getElementById('message');
