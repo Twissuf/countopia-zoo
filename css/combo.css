@@ -115,6 +115,7 @@ p {
     margin: 1rem;
 }
 
+
 .btn {
     margin-top: 5rem;
     padding: 1rem 3rem;
@@ -122,6 +123,12 @@ p {
     color: white;
     background-color: var(--primary);
     border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: var(--primary);
+    background-color: var(--highlight);
 }
 
 
