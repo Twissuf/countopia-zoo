@@ -10,6 +10,7 @@ function imgPath(num) {
 let op = "+";
 let a, b, result;
 let correctAnswer;
+let correct = 0;
 
 let message = document.getElementById("message");
 
@@ -104,10 +105,18 @@ function enableDrop() {
         slot.innerHTML = `<img src="${imgPath(value)}" style="width:100px;">`;
 
         if (value === correctAnswer) {
-            message.innerHTML = `
-            <div><p>🎉 Hebat! Semua pasangan makna ditemukan!</p></div>
-            <div><a class="btn" onclick="window.location.href='combo.html'">Next</a></div>
-            `;
+                correct += 1;
+            if (correct === 3) {
+                message.innerHTML = `
+                <div><p>🎉 Hebat! Semua pasangan ditemukan!</p></div>
+                <div><a class="btn" onclick="window.location.href='index.html'">Next</a></div>
+                `;
+            } else {
+                message.innerHTML = `
+                <div><p>🎉 Hebat! Semua pasangan ditemukan!</p></div>
+                <div><a class="btn" onclick="startGame()">Next</a></div>
+                `;
+            }
         } else {
             message.innerHTML = `
             <div><p>Maaf jawaban salah</p></div>
@@ -144,20 +153,24 @@ function touchEnd(e) {
     let slot = document.getElementById("slot");
 
     // cek kalau dilepas di SLOT
-    console.log("Drop kena:", elem);
-
-
     if (elem.closest("#slot")) {
         let val = parseInt(draggedMobile.dataset.val);
 
-        console.log(val)
         slot.innerHTML = `<img src="${imgPath(val)}" style="width:100px;">`;
 
         if (val === correctAnswer) {
-            message.innerHTML = `
-                <div><p>🎉 Hebat! Semua pasangan makna ditemukan!</p></div>
-                <div><a class="btn" onclick="window.location.href='combo.html'">Next</a></div>
-            `;
+            correct += 1;
+            if (correct === 3) {
+                message.innerHTML = `
+                <div><p>🎉 Hebat! Semua pasangan ditemukan!</p></div>
+                <div><a class="btn" onclick="window.location.href='index.html'">Next</a></div>
+                `;
+            } else {
+                message.innerHTML = `
+                <div><p>🎉 Hebat! Semua pasangan ditemukan!</p></div>
+                <div><a class="btn" onclick="startGame()">Next</a></div>
+                `;
+            }
         } else {
             message.innerHTML = `<p>Maaf jawaban salah</p>`;
         }
