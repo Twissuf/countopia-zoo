@@ -2,9 +2,9 @@
 // DATA HARGA
 // ==========================
 const prices = {
-    apel: 1,
-    pisang: 3,
-    jeruk: 2
+    apel: 2,
+    pisang: 5,
+    jeruk: 3
 };
 
 let round = 1;
@@ -35,8 +35,8 @@ function startRound() {
     const f1 = fruits[Math.floor(Math.random() * fruits.length)];
     const f2 = fruits[Math.floor(Math.random() * fruits.length)];
 
-    const q1 = Math.floor(Math.random() * 3) + 1;
-    const q2 = Math.floor(Math.random() * 3) + 1;
+    const q1 = Math.floor(Math.random() * 5) + 1;
+    const q2 = Math.floor(Math.random() * 5) + 1;
 
     correctAnswer = q1 * prices[f1] + q2 * prices[f2];
 
@@ -168,3 +168,4 @@ function checkAnswer() {
         msg.innerText = "Salah, coba lagi!";
     }
 }
+
