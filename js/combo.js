@@ -123,7 +123,7 @@ function enableDrop() {
             if (correct === 3) {
                 message.innerHTML = `
                 <div><p>🎉 Hebat! Semua pasangan ditemukan!</p></div>
-                <div><a class="btn" onclick="window.location.href='index.html'">Next</a></div>
+                <div><a class="btn" onclick="window.location.href='coino.html'">Next</a></div>
                 `;
             } else {
                 message.innerHTML = `
@@ -204,5 +204,6 @@ function touchEnd(e) {
 
 
 startGame()
+
 
 
