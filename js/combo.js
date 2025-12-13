@@ -7,10 +7,12 @@ function imgPath(num) {
     return `img/Angka${num}.png`;
 }
 
-let op = "+";
+let op;
+let operasi = ["+", "-", "x", "/"]
 let a, b, result;
 let correctAnswer;
 let correct = 0;
+let typedAnswer = "";
 
 let message = document.getElementById("message");
 
@@ -20,17 +22,26 @@ let message = document.getElementById("message");
 function startGame() {
     // op = document.getElementById("operator").value;
     message.innerHTML = "";
+    op = operasi[Math.floor(Math.random() * 3)];
     // Generate soal valid (hasil tetap 0–9)
     do {
         a = Math.floor(Math.random() * 10);
         b = Math.floor(Math.random() * 10);
         result = hitung(a, op, b);
-    } while (result < 0 || result > 9 || result !== Math.floor(result));
+    } while (result !== Math.floor(result));
 
     document.getElementById("question").innerHTML =
-        `<img src="${imgPath(a)}"> <h1>${op}</h1> <img src="${imgPath(b)}"> <h1>=</h1> <span class="slot" id="slot" style="z-index: 2;"></span>`;
+        `<img src="${imgPath(a)}" class="num"> <h1>${op}</h1> <img src="${imgPath(b)}" class="num"> <h1>=</h1> <div class="slot" id="slot" style="z-index: 2;"></div>`;
 
     correctAnswer = result;
+    typedAnswer = "";
+
+
+    slot.addEventListener('click', () => {
+        slot.innerHTML = "";      // hapus gambarnya
+        slot.dataset.value = "";  // hapus nilai angka
+        typedAnswer = "";
+    });
 
     buatPilihan();
     enableDrop();
@@ -41,14 +52,14 @@ function hitung(a, op, b) {
     if (op === "+") return a + b;
     if (op === "-") return a - b;
     if (op === "x") return a * b;
-    if (op === "÷") return b === 0 ? 99 : a / b;
+    if (op === "/") return b === 0 ? 99 : a / b;
 }
 
 // -------------------------------------------
 // Buat angka acak 0–9 (pakai gambar Angka1..10)
 // -------------------------------------------
 function buatPilihan() {
-    let list = [correctAnswer];
+    let list = correctAnswer.toString().split('').map(Number);
 
     while (list.length < 4) {
         let r = Math.floor(Math.random() * 10);
@@ -95,6 +106,7 @@ function buatPilihan() {
 function enableDrop() {
     let slot = document.getElementById("slot");
 
+
     slot.ondragover = e => e.preventDefault();
 
     slot.ondrop = function (e) {
@@ -102,11 +114,13 @@ function enableDrop() {
         let value = parseInt(e.dataTransfer.getData("value"));
 
         // tampilkan gambar di slot
-        slot.innerHTML = `<img src="${imgPath(value)}" style="width:100px;">`;
+        // slot.innerHTML = `<img src="${imgPath(value)}" style="width:100px;">`;
+        slot.innerHTML += `<img src="${imgPath(value)}" class="digit">`;
+        typedAnswer += value.toString();
 
-        if (value === correctAnswer) {
-                correct += 1;
-            if (correct === 3) {
+        if (typedAnswer === correctAnswer.toString()) {
+            correct += 1;
+            if (correct === 0) {
                 message.innerHTML = `
                 <div><p>🎉 Hebat! Semua pasangan ditemukan!</p></div>
                 <div><a class="btn" onclick="window.location.href='index.html'">Next</a></div>
@@ -155,15 +169,18 @@ function touchEnd(e) {
     // cek kalau dilepas di SLOT
     if (elem.closest("#slot")) {
         let val = parseInt(draggedMobile.dataset.val);
+        draggedMobile.style.zIndex = "";
 
-        slot.innerHTML = `<img src="${imgPath(val)}" style="width:100px;">`;
+        // slot.innerHTML = `<img src="${imgPath(val)}" style="width:100px;">`;
+        slot.innerHTML += `<img src="${imgPath(val)}" class="digit">`;
+        typedAnswer += val.toString();
 
-        if (val === correctAnswer) {
+        if (typedAnswer === correctAnswer.toString()) {
             correct += 1;
-            if (correct === 3) {
+            if (correct === 0) {
                 message.innerHTML = `
                 <div><p>🎉 Hebat! Semua pasangan ditemukan!</p></div>
-                <div><a class="btn" onclick="window.location.href='index.html'">Next</a></div>
+                <div><a class="btn" onclick="window.location.href='coino.html'">Next</a></div>
                 `;
             } else {
                 message.innerHTML = `
