@@ -76,13 +76,13 @@ p {
     display: flex;
 }
 
-#question img{
+.num{
     width: 100px;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 }
 
 .slot {
-    width: 120px;
+    min-width: 120px;
     height: 120px;
     border: 3px dashed #444;
     display: flex;
@@ -91,6 +91,12 @@ p {
     margin: 0 auto ;
     background: #f8f8f8;
     border-radius: 10px;
+}
+
+.digit {
+    width: 90px;
+    margin-left: -0.8rem;
+    margin-right: -0.8rem;
 }
 
 .numbers {
