@@ -28,8 +28,8 @@ function startGame() {
         a = Math.floor(Math.random() * 10);
         b = Math.floor(Math.random() * 10);
         result = hitung(a, op, b);
-    } while (result !== Math.floor(result));
-
+    } while (!Number.isInteger(result) || result < 0);
+    
     document.getElementById("question").innerHTML =
         `<img src="${imgPath(a)}" class="num"> <h1>${op}</h1> <img src="${imgPath(b)}" class="num"> <h1>=</h1> <div class="slot" id="slot" style="z-index: 2;"></div>`;
 
@@ -204,3 +204,4 @@ function touchEnd(e) {
 
 
 startGame()
+
