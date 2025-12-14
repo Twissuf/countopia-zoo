@@ -1,11 +1,10 @@
 // ==========================
-// DATA HARGA
-// ==========================
-const prices = {
-    apel: 2,
-    pisang: 5,
-    jeruk: 3
-};
+const questionTypes = ["total", "count"];
+
+const names = ["Andi", "Siti", "Budi", "Rina", "Doni", "Aisyah"];
+
+const fruits = ["apel", "pisang", "jeruk", "mangga", "anggur"];
+let prices = {};
 
 let round = 1;
 const maxRound = 3;
@@ -13,38 +12,74 @@ let correctAnswer = 0;
 
 // ==========================
 window.onload = () => {
-    showPrices();
     startRound();
 };
+
+// ==========================
+function generatePrices() {
+    prices = {};
+    fruits.forEach(fruit => {
+        prices[fruit] = Math.floor(Math.random() * 4) + 1;
+    });
+}
+
 
 // ==========================
 function showPrices() {
     const box = document.getElementById("priceBox");
     box.innerHTML = "<b>Daftar Harga</b><br>";
-    for (let item in prices) {
-        box.innerHTML += `${item} = ${prices[item]} koin<br>`;
+    for (let fruit in prices) {
+        box.innerHTML += `${fruit} = ${prices[fruit]} koin<br>`;
     }
 }
 
 // ==========================
 function startRound() {
+    generatePrices();
+    showPrices();
+
+    const qType = questionTypes[Math.floor(Math.random() * questionTypes.length)];
+
     document.getElementById("round").innerText = round;
     document.getElementById("message").innerText = "";
 
+    const name = names[Math.floor(Math.random() * names.length)];
+
     const fruits = Object.keys(prices);
-    const f1 = fruits[Math.floor(Math.random() * fruits.length)];
-    const f2 = fruits[Math.floor(Math.random() * fruits.length)];
 
-    const q1 = Math.floor(Math.random() * 5) + 1;
-    const q2 = Math.floor(Math.random() * 5) + 1;
+    if (qType === "total") {
+        const f1 = fruits[Math.floor(Math.random() * fruits.length)];
+        let f2;
+        do {
+            f2 = fruits[Math.floor(Math.random() * fruits.length)];
+        } while (f2 === f1);
 
-    correctAnswer = q1 * prices[f1] + q2 * prices[f2];
+        const q1 = Math.floor(Math.random() * 3) + 1;
+        const q2 = Math.floor(Math.random() * 3) + 1;
 
-    document.getElementById("question").innerText =
-        `Andi membeli ${q1} ${f1} dan ${q2} ${f2}. Berapa koin yang dibutuhkan?`;
+        correctAnswer = q1 * prices[f1] + q2 * prices[f2];
+
+        document.getElementById("question").innerText =
+            `${name} membeli ${q1} ${f1} dan ${q2} ${f2}. Berapa koin yang dibutuhkan?`
+
+    } else if (qType === "count") {
+        const fruit = fruits[Math.floor(Math.random() * fruits.length)];
+        const name = names[Math.floor(Math.random() * names.length)];
+
+        const price = prices[fruit];
+        const maxBuy = Math.floor(Math.random() * 10) + 1;
+        const totalCoin = price * maxBuy;
+
+        correctAnswer = maxBuy;
+
+        question.innerText =
+            `${name} memiliki ${totalCoin} koin. Berapa ${fruit} yang bisa dia beli?`;
+    }
+
 
     clearSlots();
     showChoices();
+
 }
 
 // ==========================
@@ -151,21 +186,17 @@ function checkAnswer() {
         setTimeout(() => {
             if (round > maxRound) {
                 document.getElementById("choices").innerHTML = "";
-                msg.innerHTML = 
-                // <div><p>Kamu Akhirnya selesai belanja</p></div>
-                `<div><a class="btn" onclick="window.location.href='index.html'">Finish</a></div>
+                msg.innerHTML =
+                    `<div><a class="btn" onclick="window.location.href='index.html'">Finish</a></div>
                 `;
             } else {
-                msg.innerHTML = 
-                // <p>Benar! 🎉</p>
-                `
+                msg.innerHTML =
+                    `
                 <a class="btn" onclick="startRound()">Next</a>
                 `;
-                // startRound();
             }
         }, 1000);
     } else {
         msg.innerText = "Salah, coba lagi!";
     }
 }
-
