@@ -177,7 +177,7 @@ function touchEnd(e) {
 
         if (typedAnswer === correctAnswer.toString()) {
             correct += 1;
-            if (correct === 0) {
+            if (correct === 3) {
                 message.innerHTML = `
                 <div><p>🎉 Hebat! Semua pasangan ditemukan!</p></div>
                 <div><a class="btn" onclick="window.location.href='coino.html'">Next</a></div>
@@ -204,6 +204,7 @@ function touchEnd(e) {
 
 
 startGame()
+
 
 
 
