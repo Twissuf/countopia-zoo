@@ -165,13 +165,15 @@ body {
 /* How to play */
 
 .tutor,
-.about {
+.about,
+.sponsor {
     padding: 8rem 7% 1.4rem;
 }
 
 .tutor h1,
 .about h1,
-.contact h1 {
+.contact h1,
+.sponsor h1 {
     color: var(--highlight);
     margin: 5rem 0;
     font-size: 4rem;
@@ -216,7 +218,8 @@ body {
 /* About */
 
 .about p,
-.contact p {
+.contact p,
+.sponsor p {
     font-size: 1.6rem;
     line-height: 1.4;
     margin-bottom: 1rem;
@@ -269,6 +272,11 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.sponsor img {
+    height: auto;
+    width: 100%;
 }
 
 
@@ -383,7 +391,7 @@ footer .credit a {
 
     .container {
         margin: 40rem 2rem;
-        border-radius: 2rem;
+        border-radius: 5rem;
     }
 
     .container .logo {
